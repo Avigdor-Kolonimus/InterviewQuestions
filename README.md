@@ -11,3 +11,12 @@ and in games such as Go and Minesweeper for determining which pieces are cleared
 Given a string S, the task is to find the lexicographically largest subsequence that can be formed using all distinct characters only once from the given string.
 (https://www.geeksforgeeks.org/lexicographically-largest-subsequence-containing-all-distinct-characters-only-once/)
 - `go run lexicographicalorder.go`
+
+### Intersection
+Given two sets, this function returns another set containing elements that exist in both sets.
+
+Example:
+```text
+[1, 2, 3, 4] intersect [3, 4, 5, 6] = [3, 4]
+```
+- `go run intersection.go`
