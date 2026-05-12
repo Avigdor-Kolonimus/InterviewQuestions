@@ -18,5 +18,5 @@ Given two sets, this function returns another set containing elements that exist
 Example:
 ```text
 [1, 2, 3, 4] intersect [3, 4, 5, 6] = [3, 4]
-
+```
 - `go run intersection.go`
