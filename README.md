@@ -20,3 +20,22 @@ Example:
 [1, 2, 3, 4] intersect [3, 4, 5, 6] = [3, 4]
 ```
 - `go run intersection.go`
+
+### WorkerPool
+Production-style Worker Pool implementation in Go using goroutines, channels, context cancellation, error handling, and panic recovery.
+
+---
+
+# Features
+
+- Concurrent job processing
+- Bounded concurrency
+- Graceful shutdown with `context.Context`
+- Error handling
+- Panic recovery
+- Synchronization with `sync.WaitGroup`
+- Safe channel closing
+- Result aggregation through channels
+---
+
+- `go run workerpool.go`
