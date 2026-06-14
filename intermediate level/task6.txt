@@ -1,0 +1,50 @@
+# What does each instruction do?
+# How will the Docker image be built?
+# Which commands are used to build the image and run the container?
+
+FROM golang:1.17 AS builder                 # Uses the Go image to compile the application.
+
+WORKDIR /app                                # Sets the working directory.
+
+COPY go.mod go.sum ./                       # Copies dependency files.
+
+RUN go mod download                         # Downloads Go dependencies.
+
+COPY . .                                    # Copies the rest of the source code.
+
+RUN go build -o myapp .                     # Builds the binary named myapp.
+
+FROM alpine:latest                          # Starts a lightweight Alpine Linux image.
+
+WORKDIR /root/                              # Sets the working directory.
+
+COPY --from=builder /app/myapp .            # Copies only the compiled binary from the builder stage.
+
+CMD ["./myapp"]                             # Runs the application when the container starts.
+
+# How is the image built?
+# Build Go binary inside the golang:1.17 image.
+# Create a new minimal Alpine image.
+# Copy only the binary into Alpine.
+# Discard all source code, compiler, and build tools.
+
+# Result: a much smaller image.
+
+# Build and Run Commands
+
+# Build the image:
+# docker build -t myapp .
+
+# Run the container:
+# docker run --rm myapp
+
+# Run in detached mode:
+# docker run -d --name myapp-container myapp
+
+# Check logs:
+# docker logs myapp-container
+
+# Follow-up Interview Question
+# What is the main advantage of a multi-stage build?
+# Answer: Smaller and more secure images because the final image contains only the compiled binary and runtime dependencies, 
+# not the Go compiler, source code, or build cache.
